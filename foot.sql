@@ -26,9 +26,8 @@ create table places (
 );
 
 create table historiques (
-    id_joueur int;
-    action varchar(100);
-)
+    id_joueur int,
+    action_j varchar(100));
 
 select j.nom, j.id_equipe from joueurs j join equipes e on e.id_equipe=j.id_equipe;
 

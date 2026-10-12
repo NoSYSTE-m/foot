@@ -91,28 +91,28 @@ public class Donnees {
                     j.y = y;
                 }
                 else if (j.getId_place() == 2) {
-                    x = 80;
+                    x = 80 + p;
                     y = 200 + p;
                     j.x = x;
                     j.y = y;
                     p+=100;
                 }
                 else if (j.getId_place() == 3) {
-                    x = 100;
+                    x = 100 + p;
                     y = 200 + p;
                     j.x = x;
                     j.y = y;
                     p+=100;
                 }
                 else if (j.getId_place() == 4) {
-                    x = 130;
+                    x = 130 + p;
                     y = 200 + p;
                     j.x = x;
                     j.y = y;
                     p+=100;
                 }
                 else if (j.getId_place() == 5) {
-                    x = 170;
+                    x = 170 + p;
                     y = 200 + p;
                     j.x = x;
                     j.y = y;
