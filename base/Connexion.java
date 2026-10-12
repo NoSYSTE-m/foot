@@ -8,8 +8,8 @@ public class Connexion {
     public static Connection getConnection() {
         Connection conn = null;
         String url = "jdbc:oracle:thin:@localhost:1521:EE";
-        String username = "scott";
-        String password = "tiger";
+        String username = "foot";
+        String password = "foot";
         try {
             conn = java.sql.DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
@@ -31,6 +31,7 @@ public class Connexion {
         ResultSet rs = null;
         try {
             Statement stmt = conn.createStatement();
+            
             rs = stmt.executeQuery(reqt);
         } catch (Exception e) {
             // TODO: handle exception
@@ -52,7 +53,22 @@ public class Connexion {
         try {
             c.close();
         } catch (Exception e) {
+        }
+    }
+
+    public int nombre_colone(String table){
+        int cont = 0;
+        Connection c = getConnection();
+        ResultSet r = null;
+        try {
+            Statement s = c.createStatement();
+            r = s.executeQuery(("SELECT COUNT(*) FROM user_tab_columns WHERE table_name = '"+table+"'"));
+            while (r.next()) {
+                cont = r.getInt(1);
+            }
+        } catch (Exception e) {
             // TODO: handle exception
         }
+        return cont;
     }
 }

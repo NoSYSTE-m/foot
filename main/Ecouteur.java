@@ -1,10 +1,12 @@
 package main;
 
 import java.awt.event.*;
-import java.util.EventListener;
+import java.util.*;
+
+import joueur.Joueur;
 
 
-public class Ecouteur extends MouseAdapter{
+public class Ecouteur implements MouseListener, KeyListener{
     private Dessin dessin;
     public Ecouteur(Dessin d){
         setDessin(d);
@@ -17,6 +19,16 @@ public class Ecouteur extends MouseAdapter{
     }
     public void mouseClicked(MouseEvent e){
         System.out.println("mouseClicked");
+        int clic_x = e.getX();
+        int clic_y = e.getY();
+        System.out.println(clic_x+"  "+clic_y);
+        Vector v_joueur = dessin.v_joueur;
+        for (int i = 0; i < v_joueur.size(); i++) {
+            Joueur j = (Joueur)v_joueur.get(i);
+            if ((clic_x >= j.x && clic_x <= (j.x + 20)) && (clic_y >= j.y && clic_y <= (j.y + 20))) {
+                System.out.println("cest    jjjjjjj   "+j.getNom());
+            }
+        }
         
     }
     public void mousePressed(MouseEvent e){
@@ -27,12 +39,24 @@ public class Ecouteur extends MouseAdapter{
         System.out.println("mouseReleased");
 
     }
-    public void mouseEntere(MouseEvent e){
+    public void mouseEntered(MouseEvent e){
         System.out.println("mouseEntere");
         
     }
     public void mouseExited(MouseEvent e){
         System.out.println("mouseExited");
     }
-    
+
+    public void keyPressed(KeyEvent e){
+        System.out.println("keyPressed");
+
+    }
+    public void keyReleased(KeyEvent e){
+        System.out.println("keyReleased");
+
+    }
+    public void keyTyped(KeyEvent e){
+        System.out.println("keyTyped");
+
+    }
 }

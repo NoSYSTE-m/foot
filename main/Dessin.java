@@ -1,11 +1,46 @@
 package main;
 import javax.swing.*;
+
+
+import base.*;
+import joueur.Equipe;
+import joueur.Joueur;
+import joueur.Remplacant;
+
 import java.awt.*;
+import java.sql.ResultSet;
+import java.util.Vector;
 public class Dessin extends JPanel {
-    // @Override
+
+    Connexion connexion;
+    public Vector v_joueur;
+    public Dessin(Connexion connexion){
+        this.connexion = connexion;
+        Ecouteur ecoute = new Ecouteur(this);
+        this.addMouseListener(ecoute);
+        this.addKeyListener(ecoute);
+        
+    }
+
+//--------------------------------------------
+    public Vector envoie_recupere(String req, String table){
+        Vector res = new Vector();
+        Donnees d = new Donnees(res, table, req, this.connexion);
+        if (table.equals("JOUEURS")) {
+            this.v_joueur = res;
+        }
+        return res;
+    }
+
+    public void envoie(String req){
+        ResultSet res = null;
+        connexion.mandefa(req);
+    }
+//--------------------------------------------
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        
         int width = getWidth();
         int height = getHeight();
         // Dessiner le terrain de football
@@ -27,8 +62,31 @@ public class Dessin extends JPanel {
         // Surface de réparation droite
         g.drawRect(660, 230, 90, 120);
         
-        Ecouteur ecoute = new Ecouteur(this);
-        this.addMouseListener(ecoute);
+
+        Vector v = envoie_recupere("select * from joueurs", "JOUEURS");
+
+        for (int i = 0; i < v.size(); i++) {
+            
+            Joueur j = ((Joueur)v.get(i));
+            if (j.getId_equipe() == 1) {
+                System.out.println(j.getNom());
+                g.setColor(Color.black);
+                System.out.println(j.x);
+                g.fillOval(j.x, j.y, 20, 20);
+                
+            }
+        }
+
+        Button b = new Button("Tirer");
+        b.addActionListener(l ->{
+            System.out.println("bbbbbbb");
+        });
+        b.setSize(50, 30);
+        add(b);
     }
-    
 }
+
+
+
+
+
