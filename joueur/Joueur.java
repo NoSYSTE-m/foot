@@ -1,5 +1,9 @@
 package joueur;
 
+import java.sql.Connection;
+
+import base.Connexion;
+
 public class Joueur {
     private int id;
     private String nom;
@@ -78,6 +82,11 @@ public class Joueur {
         setId_equipe(id_equipe);
         setAge(age);
         // position();
+    }
+    public void tirer(){
+        System.out.println(this.getNom()+" a tire");
+        Connexion c = new Connexion();
+        c.mandefa("insert into historiques values ("+this.getId()+","+"lalalala"+")");
     }
     
 }

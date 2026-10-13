@@ -27,9 +27,10 @@ public class Ecouteur implements MouseListener, KeyListener{
             Joueur j = (Joueur)v_joueur.get(i);
             if ((clic_x >= j.x && clic_x <= (j.x + 20)) && (clic_y >= j.y && clic_y <= (j.y + 20))) {
                 System.out.println("cest    jjjjjjj   "+j.getNom());
+                dessin.j_cliquer = j;
+                break;
             }
         }
-        
     }
     public void mousePressed(MouseEvent e){
         System.out.println("mousePressed");

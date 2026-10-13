@@ -14,12 +14,12 @@ public class Dessin extends JPanel {
 
     Connexion connexion;
     public Vector v_joueur;
+    public Joueur j_cliquer;
     public Dessin(Connexion connexion){
         this.connexion = connexion;
         Ecouteur ecoute = new Ecouteur(this);
         this.addMouseListener(ecoute);
         this.addKeyListener(ecoute);
-        
     }
 
 //--------------------------------------------
@@ -77,12 +77,33 @@ public class Dessin extends JPanel {
             }
         }
 
-        Button b = new Button("Tirer");
-        b.addActionListener(l ->{
-            System.out.println("bbbbbbb");
-        });
-        b.setSize(50, 30);
-        add(b);
+        // if (this.j_cliquer != null) {
+            // System.out.println("jjjjjjj  "+this.j_cliquer.getNom());
+            Button b = new Button("Tirer");
+            b.setSize(50, 30);
+            
+            Ballon ball = new Ballon(100, 100);
+            
+            b.addActionListener(l ->{
+                Annimation annimation = new Annimation(g, j_cliquer, ball);
+                System.out.println("tirer");
+                if ((this.j_cliquer != null)) {
+                    annimation.joueur_vers_ball(j_cliquer);
+                    String contraite = "tire a la position ("+this.j_cliquer.x+", "+")";
+                    // this.j_cliquer.tirer();
+                }
+                
+            });
+            add(b);
+            
+        
+        
+        // if (this.j_cliquer != null) {
+        // }
+    }
+
+    public void deplacer_vers_ballon(Joueur j){
+
     }
 }
 

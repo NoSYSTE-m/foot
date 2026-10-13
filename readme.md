@@ -26,6 +26,8 @@ class
     -main
     -listener
     -connexion
+    -donneesplaces
+    -
 fenetrage
     -terrain
     -joueur

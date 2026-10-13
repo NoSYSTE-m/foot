@@ -15,11 +15,12 @@ public class Fenetre extends JFrame {
         Connexion c = new Connexion();
         
         Dessin dessin = new Dessin(c);
+        this.add(dessin);
         this.setFocusable(true);
         this.requestFocusInWindow();
-        this.add(dessin);
-        dessin.setFocusable(true);
-        dessin.requestFocusInWindow();
+        // this.addKeyListener(new Ke);;
+        // dessin.setFocusable(true);
+        // dessin.requestFocusInWindow();
         this.setVisible(true);
         
     }
